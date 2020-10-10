@@ -1,26 +1,34 @@
 import React from 'react';
 import logo from './logo.svg';
 import './App.css';
+import Login from './Login';
+import Lists from './Lists';
+import FunctionalTest from './FunctionalTest';
+import { BrowserRouter,Link,Switch,Route } from 'react-router-dom';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+class App extends React.Component{
+  render(){
+     return (<BrowserRouter>
+    <div>
+      <Link to="/">Login</Link>
+      <br/>
+      <Link to="/functional-test">FunctionalTest</Link>
+      <br/>
+      <Link to="/lists">Lists</Link>
+    <Switch>
+      <Route exact path="/">
+        <Login title="Login page from prop"/>
+      </Route>
+      <Route path="/functional-test">
+       <FunctionalTest title="FunctionalTest title"/>
+      </Route>
+      <Route path="/lists">
+        <Lists/>
+      </Route>
+    </Switch>
+    </div>;
+    </BrowserRouter>);
+  }
 }
 
 export default App;
